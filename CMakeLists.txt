@@ -3,5 +3,7 @@ project(ds)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(ds LinkedList.cpp
-        LinkedList.cpp)
+add_executable(ds DoublyLinkedList/DoublyLinkedList.cpp
+        DoublyLinkedList/DoublyLinkedList.cpp
+        ref.cpp
+        DoublyLinkedList/DoublyLinkedList.h)
