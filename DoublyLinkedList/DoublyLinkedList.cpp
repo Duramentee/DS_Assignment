@@ -122,15 +122,8 @@ DoublyLinkedList<ElementType>::DoublyLinkedList(const Iterator& begin, const Ite
 	for (auto it = begin; it != end; ++it) {
 		auto new_node = std::make_shared<Node<ElementType>>(*it);
 
-		if (_head == nullptr) {
-			_head = new_node;
-			_tail = new_node;
-		}
-		else {
-			_tail->_next = new_node;
-			new_node->prev = _tail;
-			_tail = new_node;
-		}
+		_head = new_node;
+		_tail = new_node;
 		++_size;
 	}
 }

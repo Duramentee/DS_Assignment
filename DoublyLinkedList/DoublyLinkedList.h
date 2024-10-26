@@ -71,8 +71,8 @@ private:
 
 public:
 	DoublyLinkedList() = default;
-	explicit DoublyLinkedList(const uint64_t size);
-	DoublyLinkedList(const uint64_t size, ElementType val);
+	explicit DoublyLinkedList(uint64_t size);
+	DoublyLinkedList(uint64_t size, ElementType val);
 	DoublyLinkedList(const Iterator& begin, const Iterator& end);
 	DoublyLinkedList(std::initializer_list<DoublyLinkedList<ElementType>> list);
 

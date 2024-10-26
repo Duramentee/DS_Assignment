@@ -1,0 +1,4 @@
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make -DCMAKE_C_COMPILER=/usr/bin/cc -DCMAKE_CXX_COMPILER=/usr/bin/c++ -G "Unix Makefiles" -S /home/kojimamemes/DS_Assignment -B /home/kojimamemes/DS_Assignment/cmake-build-wsl-debug
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/kojimamemes/DS_Assignment/cmake-build-wsl-debug

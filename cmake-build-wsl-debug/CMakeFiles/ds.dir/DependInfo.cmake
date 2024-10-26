@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/kojimamemes/ds/LinkedList.cpp" "CMakeFiles/ds.dir/LinkedList.cpp.o" "gcc" "CMakeFiles/ds.dir/LinkedList.cpp.o.d"
+  "/home/kojimamemes/DS_Assignment/DoublyLinkedList/DoublyLinkedList.cpp" "CMakeFiles/ds.dir/DoublyLinkedList/DoublyLinkedList.cpp.o" "gcc" "CMakeFiles/ds.dir/DoublyLinkedList/DoublyLinkedList.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

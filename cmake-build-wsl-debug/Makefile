@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kojimamemes/ds
+CMAKE_SOURCE_DIR = /home/kojimamemes/DS_Assignment
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kojimamemes/ds/cmake-build-wsl-debug
+CMAKE_BINARY_DIR = /home/kojimamemes/DS_Assignment/cmake-build-wsl-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kojimamemes/ds/cmake-build-wsl-debug/CMakeFiles /home/kojimamemes/ds/cmake-build-wsl-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kojimamemes/DS_Assignment/cmake-build-wsl-debug/CMakeFiles /home/kojimamemes/DS_Assignment/cmake-build-wsl-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kojimamemes/ds/cmake-build-wsl-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kojimamemes/DS_Assignment/cmake-build-wsl-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,29 +129,29 @@ ds/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/build
 .PHONY : ds/fast
 
-LinkedList.o: LinkedList.cpp.o
-.PHONY : LinkedList.o
+DoublyLinkedList/DoublyLinkedList.o: DoublyLinkedList/DoublyLinkedList.cpp.o
+.PHONY : DoublyLinkedList/DoublyLinkedList.o
 
 # target to build an object file
-LinkedList.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/LinkedList.cpp.o
-.PHONY : LinkedList.cpp.o
+DoublyLinkedList/DoublyLinkedList.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/DoublyLinkedList/DoublyLinkedList.cpp.o
+.PHONY : DoublyLinkedList/DoublyLinkedList.cpp.o
 
-LinkedList.i: LinkedList.cpp.i
-.PHONY : LinkedList.i
+DoublyLinkedList/DoublyLinkedList.i: DoublyLinkedList/DoublyLinkedList.cpp.i
+.PHONY : DoublyLinkedList/DoublyLinkedList.i
 
 # target to preprocess a source file
-LinkedList.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/LinkedList.cpp.i
-.PHONY : LinkedList.cpp.i
+DoublyLinkedList/DoublyLinkedList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/DoublyLinkedList/DoublyLinkedList.cpp.i
+.PHONY : DoublyLinkedList/DoublyLinkedList.cpp.i
 
-LinkedList.s: LinkedList.cpp.s
-.PHONY : LinkedList.s
+DoublyLinkedList/DoublyLinkedList.s: DoublyLinkedList/DoublyLinkedList.cpp.s
+.PHONY : DoublyLinkedList/DoublyLinkedList.s
 
 # target to generate assembly for a file
-LinkedList.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/LinkedList.cpp.s
-.PHONY : LinkedList.cpp.s
+DoublyLinkedList/DoublyLinkedList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/DoublyLinkedList/DoublyLinkedList.cpp.s
+.PHONY : DoublyLinkedList/DoublyLinkedList.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ds"
-	@echo "... LinkedList.o"
-	@echo "... LinkedList.i"
-	@echo "... LinkedList.s"
+	@echo "... DoublyLinkedList/DoublyLinkedList.o"
+	@echo "... DoublyLinkedList/DoublyLinkedList.i"
+	@echo "... DoublyLinkedList/DoublyLinkedList.s"
 .PHONY : help
 
 

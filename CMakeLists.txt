@@ -5,5 +5,4 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(ds DoublyLinkedList/DoublyLinkedList.cpp
         DoublyLinkedList/DoublyLinkedList.cpp
-        ref.cpp
         DoublyLinkedList/DoublyLinkedList.h)
