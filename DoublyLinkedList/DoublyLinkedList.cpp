@@ -129,43 +129,69 @@ DoublyLinkedList<ElementType>::DoublyLinkedList(const Iterator& begin, const Ite
 }
 
 template <typename ElementType>
-DoublyLinkedList<ElementType>::DoublyLinkedList(std::initializer_list<DoublyLinkedList<ElementType>> list) {
-
+DoublyLinkedList<ElementType>::DoublyLinkedList(std::initializer_list<ElementType> list) :
+	_size{0}, _head{nullptr}, _tail{nullptr} {
+	for (const auto& value : list) {
+		push_back(value);
+	}
 }
 
 template <typename ElementType>
 DoublyLinkedList<ElementType>::DoublyLinkedList(const DoublyLinkedList& ano_list) : _size{ano_list._size} {
-
+	for (auto it = ano_list.begin(); it != ano_list.end(); ++it) {
+		push_back(std::make_shared<Node<ElementType>>(*it));
+		++_size;
+	}
 }
 
 template <typename ElementType>
-DoublyLinkedList<ElementType>&
-DoublyLinkedList<ElementType>::operator=(const DoublyLinkedList& ano_list) : _size{ano_list._size} {
+DoublyLinkedList<ElementType>& DoublyLinkedList<ElementType>::operator=(const DoublyLinkedList& ano_list) {
 	if (this != &ano_list) {
+		this->clear();
 
+		Node<ElementType>* current = ano_list._head.lock().get();
+		while (current != nullptr) {
+			auto new_node = std::make_shared<Node<ElementType>>(current->_val);
+
+			if (_head == nullptr) {
+				_head = new_node;
+				_tail = new_node;
+			} else {
+				new_node->_prev = _tail;
+				_tail->_next = new_node;
+				_tail = new_node;
+			}
+			current = current->_next.lock().get();
+		}
+
+		_size = ano_list._size;
 	}
 	return *this;
 }
 
 template <typename ElementType>
-DoublyLinkedList<ElementType>::DoublyLinkedList(DoublyLinkedList&& ano_list) noexcept {
-	if (this != &ano_list) {
-
-	}
+DoublyLinkedList<ElementType>::DoublyLinkedList(DoublyLinkedList&& ano_list) noexcept
+	: _size(ano_list._size), _head(std::move(ano_list._head)), _tail(std::move(ano_list._tail)) {
+	ano_list._size = 0;
+	ano_list._head.reset();
+	ano_list._tail.reset();
 }
 
 template <typename ElementType>
 DoublyLinkedList<ElementType>&
 DoublyLinkedList<ElementType>::operator=(DoublyLinkedList&& ano_list) noexcept {
 	if (this != &ano_list) {
+		this->clear();
 
+		_size = ano_list._size;
+		_head = std::move(ano_list._head);
+		_tail = std::move(ano_list._tail);
+
+		ano_list._size = 0;
+		ano_list._head.reset();
+		ano_list._tail.reset();
 	}
 	return *this;
-}
-
-template <typename ElementType>
-DoublyLinkedList<ElementType>::~DoublyLinkedList() {
-
 }
 
 template <typename ElementType>
@@ -197,12 +223,81 @@ void DoublyLinkedList<ElementType>::push_back(ElementType val) {
 }
 
 template <typename ElementType>
-void DoublyLinkedList<ElementType>::insert(ElementType val) {
+void DoublyLinkedList<ElementType>::insert(Iterator it, ElementType val) {
+	auto new_node = std::make_shared<LinkedListNode<ElementType>>(val);
 
+	if (it == _head) {
+		new_node->_next = _head;
+		if (_head) {
+			_head->_prev = new_node;
+		}
+		_head = new_node;
+	} else if (it == nullptr) {
+		if (_tail) {
+			_tail->_next = new_node;
+			new_node->_prev = _tail;
+		}
+		_tail = new_node;
+	} else {
+		auto current_node = it.lock();
+		if (current_node) {
+			new_node->_next = current_node;
+			new_node->_prev = current_node->_prev.lock();
+
+			if (current_node->_prev.lock()) {
+				current_node->_prev.lock()->_next = new_node;
+			}
+
+			current_node->_prev = new_node;
+		}
+	}
+	_size++;
+}
+
+template <typename ElementType>
+void DoublyLinkedList<ElementType>::pop_back() {
+	if (_tail == nullptr) {
+		return;
+	}
+	if (_head == _tail) {
+		_head.reset();
+		_tail.reset();
+	} else {
+		auto new_tail = _tail->_prev.lock();
+		new_tail->_next.reset();
+		_tail.reset();
+		_tail = new_tail;
+	}
+	_size--;
+}
+
+template <typename ElementType>
+void DoublyLinkedList<ElementType>::pop_front() {
+	if (_head == nullptr) {
+		return;
+	}
+	if (_head == _tail) {
+		_head.reset();
+		_tail.reset();
+	} else {
+		auto new_head = _head->_next.lock();
+		new_head->_prev.reset();
+		_head.reset();
+		_head = new_head;
+	}
+	_size--;
 }
 
 
-
-
+template <typename ElementType>
+void DoublyLinkedList<ElementType>::clear() {
+	if (_head) {
+		_head.reset();
+	}
+	if (_tail) {
+		_tail.reset();
+	}
+	_size = 0;
+}
 
 }

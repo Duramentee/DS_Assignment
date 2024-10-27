@@ -74,7 +74,7 @@ public:
 	explicit DoublyLinkedList(uint64_t size);
 	DoublyLinkedList(uint64_t size, ElementType val);
 	DoublyLinkedList(const Iterator& begin, const Iterator& end);
-	DoublyLinkedList(std::initializer_list<DoublyLinkedList<ElementType>> list);
+	DoublyLinkedList(std::initializer_list<ElementType> list);
 
 	DoublyLinkedList(const DoublyLinkedList& ano_list);
 	DoublyLinkedList& operator=(const DoublyLinkedList& ano_list);
@@ -82,15 +82,24 @@ public:
 	DoublyLinkedList(DoublyLinkedList&& ano_list) noexcept;
 	DoublyLinkedList& operator=(DoublyLinkedList&& ano_list) noexcept;
 
-	~DoublyLinkedList();
+	~DoublyLinkedList() = default;
 
 public:
 	Iterator begin() const { return Iterator(_head); }
 	Iterator end() const { return Iterator(_tail); }
+	ElementType front() const {return *_head->_val;}
+	ElementType back() const {return *_tail->_val;}
+	ElementType size() const {return _size;}
+	[[nodiscard]] bool empty() const {return _size == 0;}
 
 	void push_front(ElementType val);
 	void push_back(ElementType val);
-	void insert(ElementType val);
+	void insert(Iterator it, ElementType val);
+
+	void pop_back();
+	void pop_front();
+
+	void clear();
 };
 
 template <typename ElementType>
