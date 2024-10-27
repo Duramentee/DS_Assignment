@@ -117,41 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ds
+# Target rules for targets named test.out
 
 # Build rule for target.
-ds: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ds
-.PHONY : ds
+test.out: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test.out
+.PHONY : test.out
 
 # fast build rule for target.
-ds/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/build
-.PHONY : ds/fast
+test.out/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/build
+.PHONY : test.out/fast
 
-DoublyLinkedList/DoublyLinkedList.o: DoublyLinkedList/DoublyLinkedList.cpp.o
-.PHONY : DoublyLinkedList/DoublyLinkedList.o
+main.o: main.cpp.o
+.PHONY : main.o
 
 # target to build an object file
-DoublyLinkedList/DoublyLinkedList.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/DoublyLinkedList/DoublyLinkedList.cpp.o
-.PHONY : DoublyLinkedList/DoublyLinkedList.cpp.o
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-DoublyLinkedList/DoublyLinkedList.i: DoublyLinkedList/DoublyLinkedList.cpp.i
-.PHONY : DoublyLinkedList/DoublyLinkedList.i
+main.i: main.cpp.i
+.PHONY : main.i
 
 # target to preprocess a source file
-DoublyLinkedList/DoublyLinkedList.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/DoublyLinkedList/DoublyLinkedList.cpp.i
-.PHONY : DoublyLinkedList/DoublyLinkedList.cpp.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-DoublyLinkedList/DoublyLinkedList.s: DoublyLinkedList/DoublyLinkedList.cpp.s
-.PHONY : DoublyLinkedList/DoublyLinkedList.s
+main.s: main.cpp.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-DoublyLinkedList/DoublyLinkedList.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ds.dir/build.make CMakeFiles/ds.dir/DoublyLinkedList/DoublyLinkedList.cpp.s
-.PHONY : DoublyLinkedList/DoublyLinkedList.cpp.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -161,10 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... ds"
-	@echo "... DoublyLinkedList/DoublyLinkedList.o"
-	@echo "... DoublyLinkedList/DoublyLinkedList.i"
-	@echo "... DoublyLinkedList/DoublyLinkedList.s"
+	@echo "... test.out"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

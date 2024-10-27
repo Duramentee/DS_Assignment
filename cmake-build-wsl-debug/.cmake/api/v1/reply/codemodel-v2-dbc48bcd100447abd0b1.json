@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "ds",
+					"name" : "test.out",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "ds::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ds-Debug-938354fa553b9ecaa638.json",
-					"name" : "ds",
+					"id" : "test.out::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test.out-Debug-93cd8f2903fd2bf39116.json",
+					"name" : "test.out",
 					"projectIndex" : 0
 				}
 			]
